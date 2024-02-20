@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navigation from './components/UserInterface/Navigation';
+import Dashboard from './components/UserInterface/Dashboard';
+import DemandProjection from './components/ResourcePlanning/DemandProjection';
+import LongTermPlanning from './components/ResourcePlanning/LongTermPlanning';
+import WaterQualityAlert from './components/WaterQuality/WaterQualityAlert';
+import WaterQualityMonitor from './components/WaterQuality/WaterQualityMonitor';
+import PredictionForm from './components/PredictionForm';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/demand-projection" element={<DemandProjection />} />
+        <Route path="/long-term-planning" element={<LongTermPlanning />} />
+        <Route path="/water-quality-alert" element={<WaterQualityAlert />} />
+        <Route path="/water-quality-monitor" element={<WaterQualityMonitor />} />
+        <Route path="/predict" element={<PredictionForm />} />
+        {/* Aquí puedes agregar más rutas según sea necesario */}
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
